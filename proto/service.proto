@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package tonic_playground;
+
+message Foo {
+  int64 value = 1;
+}
+
+message Bar {
+  int64 value = 1;
+}
+
+service Playground {
+  rpc TestUnaryUnary (Foo) returns (Bar);
+  rpc TestUnaryStream (Foo) returns (stream Bar);
+  rpc TestStreamUnary (stream Foo) returns (Bar);
+  rpc TestStreamStream (stream Foo) returns (stream Bar);
+}
